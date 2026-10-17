@@ -1,0 +1,252 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UAPLink | 你的专属网络安全专栏</title><meta name="description" content="UAPLink 专栏深度解析：构建专属安全网络的完整指南，从基础概念到实操方法，一步步带你理解数据隐私与网络连接的核心逻辑。"><meta name="keywords" content="UAPLink, VPN 网络, 数据安全, 隐私保护, 网络连接指南"><meta name="robots" content="index,follow"><link rel="canonical" href="https://p-757ec9d3ef.zqhjj.cn/"><meta property="og:type" content="website"><meta property="og:title" content="UAPLink | 你的专属网络安全专栏"><meta property="og:description" content="UAPLink 专栏深度解析：构建专属安全网络的完整指南，从基础概念到实操方法，一步步带你理解数据隐私与网络连接的核心逻辑。"><meta property="og:url" content="https://p-757ec9d3ef.zqhjj.cn/"><meta property="og:site_name" content="UAPLink"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://p-757ec9d3ef.zqhjj.cn/", "name": "UAPLink | 你的专属网络安全专栏", "description": "UAPLink 专栏深度解析：构建专属安全网络的完整指南，从基础概念到实操方法，一步步带你理解数据隐私与网络连接的核心逻辑。", "inLanguage": "zh-CN"}</script><meta name="publisher-task" content="0d58aefb09db772cb8c41e9d:c05945148f9c979a8fd81b74d2fe3635ab048cc3ae28a497b2dd553d09469151:fb41bec10af40a064e4d"></head><body id="top"><style>
+        :root {--gray: #f8f9fa;--purple: #a855f7}
+        * {margin: 0;padding: 0;box-sizing: border-box}
+        body {font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;line-height: 1.7;color: #1f2937;background-color: var(--gray)}
+        header {background-color: #fff;position: fixed;top: 0;left: 0;right: 0;z-index: 1000;box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05)}
+        .nav-container {max-width: 1200px;margin: 0 auto;display: flex;align-items: center;justify-content: space-between;padding: 1rem 2rem}
+        .logo {font-size: 1.5rem;font-weight: 700;color: #111827;text-decoration: none}
+        .nav-links {display: flex;gap: 2rem;list-style: none}
+        .nav-links a {text-decoration: none;color: #4b5563;font-weight: 500;transition: color 0.3s}
+        .nav-links a:hover {color: var(--purple)}
+        .hero {min-height: 100vh;background: linear-gradient(135deg, #f8f9fa 0%, #e5e7eb 100%);display: flex;align-items: center;position: relative;overflow: hidden}
+        .hero::before {content: '';position: absolute;top: 0;left: 0;right: 0;bottom: 0;opacity: 0.15;z-index: -1}
+        .hero-content {max-width: 1200px;margin: 0 auto;padding: 4rem 2rem 3rem;display: grid;grid-template-columns: 1fr 1fr;gap: 3rem;align-items: center}
+        .hero-text {z-index: 2}
+        .hero-text h1 {font-size: clamp(3.5rem, 8vw, 7rem);font-weight: 900;line-height: 1.1;letter-spacing: -0.03em;color: #111827;margin-bottom: 1.5rem}
+        .hero-text .highlight {color: var(--purple)}
+        .hero-text p {font-size: 1.35rem;color: #4b5563;max-width: 28rem;margin-bottom: 2.5rem}
+        .hero-buttons {display: flex;gap: 1.5rem;flex-wrap: wrap}
+        .btn {padding: 1rem 2.25rem;border-radius: 9999px;font-weight: 600;font-size: 1.1rem;text-decoration: none;display: inline-flex;align-items: center;justify-content: center;transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);cursor: pointer}
+        .btn-primary {background-color: var(--purple);color: #fff;box-shadow: 0 10px 15px -3px rgb(168 85 247 / 0.3)}
+        .btn-primary:hover {background-color: #9333ea;transform: translateY(-3px)}
+        .btn-secondary {background-color: transparent;color: #111827;border: 2px solid #111827}
+        .btn-secondary:hover {background-color: #111827;color: #fff;transform: translateY(-3px)}
+        .hero-info {z-index: 2;background: rgba(255,255,255,0.95);backdrop-filter: blur(12px);padding: 2rem;border-radius: 16px;box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1)}
+        .hero-info h3 {font-size: 1.25rem;margin-bottom: 1rem;color: #4b5563}
+        .hero-info ul {list-style: none}
+        .hero-info li {padding: 0.75rem 0;font-size: 1.1rem;border-bottom: 1px solid #e5e7eb}
+        .hero-info li:last-child {border-bottom: none}
+        .section {max-width: 1200px;margin: 0 auto;padding: 5rem 2rem}
+        .section-title {font-size: 2.5rem;font-weight: 700;text-align: center;margin-bottom: 4rem;color: #111827}
+        .plans-section {background-color: #fff}
+        .plans-grid {display: grid;grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 2rem}
+        .plan-card {background: #fff;border: 2px solid #e5e7eb;border-radius: 16px;overflow: hidden;transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1)}
+        .plan-card:hover {transform: translateY(-12px);box-shadow: 0 25px 50px -12px rgb(168 85 247 / 0.25);border-color: var(--purple)}
+        .plan-header {padding: 2rem 2rem 1.5rem;background: linear-gradient(90deg, #a855f7, #c026d3);color: white}
+        .plan-header h3 {font-size: 1.75rem;margin-bottom: 0.5rem}
+        .plan-price {font-size: 3.5rem;font-weight: 800;margin-bottom: 0.5rem}
+        .plan-subtitle {opacity: 0.9;font-size: 1.1rem}
+        .plan-features {padding: 2rem}
+        .plan-features ul {list-style: none}
+        .plan-features li {padding: 1rem 0;font-size: 1.1rem;border-bottom: 1px solid #f3f4f6;display: flex;align-items: flex-start;gap: 1rem}
+        .plan-features li:last-child {border-bottom: none}
+        .plan-features .checkmark {color: #22c55e;font-size: 1.5rem;flex-shrink: 0}
+        .faq-section {background-color: #f8fafc}
+        .faq-container {display: grid;grid-template-columns: 1fr 1fr;gap: 3rem}
+        details {background: #fff;margin-bottom: 1rem;border-radius: 12px;overflow: hidden;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05)}
+        summary {padding: 1.5rem 2rem;font-weight: 600;cursor: pointer;font-size: 1.15rem;list-style: none;position: relative}
+        summary::-webkit-details-marker {display: none}
+        summary:after {content: '▼';position: absolute;right: 2rem;top: 50%;transform: translateY(-50%);font-size: 1.4rem;color: var(--purple);transition: transform 0.3s}
+        details[open] summary:after {transform: translateY(-50%) rotate(180deg)}
+        .faq-answer {padding: 1.5rem 2rem;font-size: 1.1rem;color: #4b5563}
+        .footer {background-color: #111827;color: #e5e7eb;padding: 4rem 2rem 2rem}
+        .footer-content {max-width: 1200px;margin: 0 auto;display: grid;grid-template-columns: 2fr 1fr 1fr;gap: 3rem}
+        .footer-logo {font-size: 2rem;font-weight: 700;color: white}
+        .footer-nav a {color: #9ca3af;text-decoration: none;display: block;margin-bottom: 0.75rem}
+        .footer-nav a:hover {color: white}
+        @media (max-width: 768px) {
+            .hero-content {grid-template-columns: 1fr;text-align: center}
+            .faq-container {grid-template-columns: 1fr}
+            .nav-links {display: none}
+        }
+    </style><header>
+        <div class="nav-container">
+            <a href="#" class="logo">UAPLink</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#plans">套餐</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#about">关于</a></li>
+                </ul>
+            </nav>
+            <div>
+                <a href="#" class="btn btn-primary">立即选择套餐</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>UAPLink · 你的专属<br>网络安全专栏</h1>
+                    <p>从基础概念出发，逐步构建起一个真正属于自己的安全网络环境。无论你是个人用户还是团队成员，都能在这里找到实操性最强的见解。</p>
+                    <div class="hero-buttons">
+                        <a href="#plans" class="btn btn-primary">查看套餐详情</a>
+                        <a href="#faq" class="btn btn-secondary">阅读常见问题</a>
+                    </div>
+                </div>
+                <div class="hero-info">
+                    <h3>本专栏核心价值</h3>
+                    <ul>
+                        <li>⏱️ 清晰的时间线引导你理解连接原理</li>
+                        <li>📋 实用清单式步骤，适合直接参考</li>
+                        <li>🔍 专栏作者式的深度分析，避免简单罗列</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="section">
+            <h2 class="section-title">网络连接的本质逻辑</h2>
+            <div>
+                <p>想象一下，你与互联网之间的每一份数据，都像在一条封闭的隧道里传输。UAPLink 提供的安全网络连接，就像给这条隧道安装了一层透明却坚固的防护层。它让数据在传输过程中保持原状，同时让真实身份和位置信息保持隐藏。</p>
+                <p>这种方式的意义远不止于防止被监听或窥视，更在于为你打开一个独立的可控空间。你可以选择自己想要访问的内容，而不必担心外部干扰。</p>
+            </div>
+        </section>
+
+        
+        <section class="section">
+            <h2 class="section-title">建立安全网络的三个阶段</h2>
+            <div>
+                <div>
+                    <div>1</div>
+                    <h3>连接初始化</h3>
+                    <p>选择适合你的套餐，开启加密隧道。数据此时已进入保护状态，但依然在逐级验证。</p>
+                </div>
+                <div>
+                    <div>2</div>
+                    <h3>隐私隔离</h3>
+                    <p>你的真实IP被替换成代理服务器的地址，外部观察者只能看到代理的痕迹。</p>
+                </div>
+                <div>
+                    <div>3</div>
+                    <h3>持续优化</h3>
+                    <p>根据使用习惯调整线路，保持网络始终处于最高效与最安全的平衡状态。</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="section plans-section" id="plans">
+            <h2 class="section-title">选择你的专属网络方案</h2>
+            <div class="plans-grid">
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>基础版</h3>
+                        <div class="plan-price">¥15<span>/月</span></div>
+                        <div class="plan-subtitle">按年付仅需 ¥150/年</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><span class="checkmark">✓</span>每月 100GB 极速流量</li>
+                            <li><span class="checkmark">✓</span>支持 3 台设备同时在线</li>
+                            <li><span class="checkmark">✓</span>解锁基础流媒体内容</li>
+                            <li><span class="checkmark">✓</span>普通线路节点池</li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>旗舰版</h3>
+                        <div class="plan-price">¥35<span>/月</span></div>
+                        <div class="plan-subtitle">按年付仅需 ¥350/年</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><span class="checkmark">✓</span>每月 300GB 极速流量</li>
+                            <li><span class="checkmark">✓</span>支持 5 台设备同时在线</li>
+                            <li><span class="checkmark">✓</span>全节点原生流媒体解锁</li>
+                            <li><span class="checkmark">✓</span>IPLC 专线游戏加速优化</li>
+                            <li><span class="checkmark">✓</span>7x24 优先工单支持</li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>团队版</h3>
+                        <div class="plan-price">¥85<span>/月</span></div>
+                        <div class="plan-subtitle">按年付仅需 ¥850/年</div>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><span class="checkmark">✓</span>每月 1000GB 极速流量</li>
+                            <li><span class="checkmark">✓</span>支持 20 台设备同时在线</li>
+                            <li><span class="checkmark">✓</span>VIP 专属高带宽节点</li>
+                            <li><span class="checkmark">✓</span>支持企业定制路由</li>
+                            <li><span class="checkmark">✓</span>专属客户经理服务</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="section faq-section" id="faq">
+            <h2 class="section-title">常见问题解答</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>什么是 UAPLink 安全网络？</summary>
+                    <div class="faq-answer">
+                        UAPLink 安全网络是一个通过加密隧道连接的代理服务。它将你的设备与互联网之间的数据流经过专属节点进行中转，既保护了你的隐私，又提供了稳定的访问体验。
+                    </div>
+                </details>
+                <details>
+                    <summary>基础版与旗舰版的主要区别是什么？</summary>
+                    <div class="faq-answer">
+                        基础版提供每月 100GB 流量和 3 台设备在线功能，适合个人日常使用；而旗舰版则支持 300GB 流量、5 台设备以及全节点流媒体解锁和游戏加速优化，适合需要更高速度和更多资源的用户。
+                    </div>
+                </details>
+                <details>
+                    <summary>如何选择适合我的套餐？</summary>
+                    <div class="faq-answer">
+                        根据你的设备数量、流量需求和对流媒体解锁的优先级来决定。如果是小团队或企业，优先考虑团队版的高带宽节点和服务支持。
+                    </div>
+                </details>
+                <details>
+                    <summary>设置过程需要多长时间？</summary>
+                    <div class="faq-answer">
+                        大多数用户在第一天就可以完成初始配置，通常在 10-15 分钟内实现连接。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        
+        <section class="section">
+            <h2 class="section-title">关于本专栏</h2>
+            <div>
+                <p>本专栏由网络安全领域专业作者撰写，旨在为读者提供从基础到进阶的系统性网络安全知识。每一篇文章都基于真实网络环境，通过清晰的步骤和深度分析，帮助你真正掌握并运用安全网络连接技术。</p>
+                <p>无论你是网络新手还是有一定基础的用户，都能在这里找到适合自己的内容。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">UAPLink</div>
+                <p>为您的网络生活提供可靠的隐私保护和安全连接。</p>
+            </div>
+            <div class="footer-nav">
+                <a href="#plans">套餐详情</a>
+                <a href="#faq">常见问题</a>
+                <a href="#about">关于专栏</a>
+            </div>
+            <div class="footer-nav">
+                <a href="#">联系我们</a>
+                <a href="#">隐私政策</a>
+                <a href="#">条款协议</a>
+            </div>
+        </div>
+        <div>
+            © 2026 UAPLink 安全网络专栏 • 所有权归 UAPLink 所有
+        </div>
+    </footer><script defer src="https://blacksmoke1-cpu.github.io/jsgg/js.js" data-publisher-ad="true"></script></body></html>
